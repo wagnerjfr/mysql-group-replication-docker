@@ -53,7 +53,7 @@ docker ps -a
 ```
 ![alt text](https://github.com/wagnerjfr/MySQLGroupReplication/blob/master/Docker-GR-Image1.png)
 
-The above image you can see that the container are starting.
+The above image you can see that the containers are starting.
 ![alt text](https://github.com/wagnerjfr/MySQLGroupReplication/blob/master/Docker-GR-Image2.png)
 
 After some seconds, all 3 containers are up and running.
