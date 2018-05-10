@@ -1,5 +1,5 @@
-# MySQLGroupReplication
-Setting Group Replication with Docker MySQL images
+# MySQLGroupReplication with Docker MySQL Images
+Setting up Group Replication with Docker MySQL images
 
 
 ## Prerequisites
@@ -25,7 +25,6 @@ docker pull mysql/mysql-server
 docker pull mysql/mysql-server:5.7
 docker pull mysql/mysql-server:8.0
 ```
-
 In this example, we are going to use ***mysql/mysql-server:8.0***
 
 ## Creating a Docker network
@@ -52,10 +51,10 @@ It's possible to see whether the containers are started by running:
 ```
 docker ps -a
 ```
-<image>
+![alt text](https://github.com/wagnerjfr/MySQLGroupReplication/blob/master/Docker-GR-Image1.png)
 
 The above image you can see that the container are starting.
-<image>
+![alt text](https://github.com/wagnerjfr/MySQLGroupReplication/blob/master/Docker-GR-Image2.png)
 
 After some seconds, all 3 containers are up and running.
 
@@ -106,7 +105,7 @@ START GROUP_REPLICATION;
 SELECT * FROM performance_schema.replication_group_members;
 ```
 By now, you should see:
-<image>
+![alt text](https://github.com/wagnerjfr/MySQLGroupReplication/blob/master/Docker-GR-Image3.png)
 
 ## Stop containers, remove created network and image
 
