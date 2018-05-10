@@ -125,5 +125,5 @@ docker network rm group1
 ```
 #### Remove the MySQL 8 image:
 ```
-$ docker rmi mysql/mysql-server:8.0
+docker rmi mysql/mysql-server:8.0
 ```
