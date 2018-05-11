@@ -1,6 +1,12 @@
 # MySQLGroupReplication with Docker MySQL Images
 Setting up Group Replication with Docker MySQL images
 
+#### The MySQL Group Replication feature is a multi-master update anywhere replication plugin  for MySQL with built-in conflict detection and resolution, automatic distributed recovery, and group membership.
+
+## References
+1. https://dev.mysql.com/doc/refman/8.0/en/group-replication.html
+2. https://mysqlhighavailability.com/mysql-group-replication-its-in-5-7-17-ga/
+
 
 ## Prerequisites
 
