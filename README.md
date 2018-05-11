@@ -47,11 +47,71 @@ docker network ls
 
 Run the commands below in a terminal.
 ```
-docker run -d --rm --name=node1 --net=group1 --hostname=node1 -v $PWD/d0:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=mypass mysql/mysql-server:8.0 --server-id=1 --log-bin='mysql-bin-1.log' --enforce-gtid-consistency='ON' --log-slave-updates='ON' --gtid-mode='ON' --transaction-write-set-extraction='XXHASH64' --binlog-checksum='NONE' --master-info-repository='TABLE' --relay_log_info_repository='TABLE' --plugin-load='group_replication.so' --relay-log-recovery='ON' --group_replication_start_on_boot='OFF' --group_replication_group_name='aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee' --group_replication_local_address='node1:6606' --group_replication_group_seeds='node1:6606,node2:6606,node3:6606' --group_replication_ip_whitelist='172.19.0.2,172.19.0.3,172.19.0.4' --group_replication_bootstrap_group='OFF' --group_replication_recovery_retry_count=5
+docker run -d --rm --name=node1 --net=group1 --hostname=node1 \
+  -v $PWD/d0:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=mypass \
+  mysql/mysql-server:8.0 \
+  --server-id=1 \
+  --log-bin='mysql-bin-1.log' \
+  --enforce-gtid-consistency='ON' \
+  --log-slave-updates='ON' \
+  --gtid-mode='ON' \
+  --transaction-write-set-extraction='XXHASH64' \
+  --binlog-checksum='NONE' \
+  --master-info-repository='TABLE' \
+  --relay_log_info_repository='TABLE' \
+  --plugin-load='group_replication.so' \
+  --relay-log-recovery='ON' \
+  --group_replication_start_on_boot='OFF' \
+  --group_replication_group_name='aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee' \
+  --group_replication_local_address='node1:6606' \
+  --group_replication_group_seeds='node1:6606,node2:6606,node3:6606' \
+  --group_replication_ip_whitelist='172.19.0.2,172.19.0.3,172.19.0.4' \
+  --group_replication_bootstrap_group='OFF' \
+  --group_replication_recovery_retry_count=5
 
-docker run -d --rm --name=node2 --net=group1 --hostname=node2 -v $PWD/d1:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=mypass mysql/mysql-server:8.0 --server-id=2 --log-bin='mysql-bin-1.log' --enforce-gtid-consistency='ON' --log-slave-updates='ON' --gtid-mode='ON' --transaction-write-set-extraction='XXHASH64' --binlog-checksum='NONE' --master-info-repository='TABLE' --relay_log_info_repository='TABLE' --plugin-load='group_replication.so' --relay-log-recovery='ON' --group_replication_start_on_boot='OFF' --group_replication_group_name='aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee' --group_replication_local_address='node2:6606' --group_replication_group_seeds='node1:6606,node2:6606,node3:6606' --group_replication_ip_whitelist='172.19.0.2,172.19.0.3,172.19.0.4' --group_replication_bootstrap_group='OFF' --group_replication_recovery_retry_count=5
+docker run -d --rm --name=node2 --net=group1 --hostname=node2 \
+  -v $PWD/d1:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=mypass \
+  mysql/mysql-server:8.0 \
+  --server-id=2 \
+  --log-bin='mysql-bin-1.log' \
+  --enforce-gtid-consistency='ON' \
+  --log-slave-updates='ON' \
+  --gtid-mode='ON' \
+  --transaction-write-set-extraction='XXHASH64' \
+  --binlog-checksum='NONE' \
+  --master-info-repository='TABLE' \
+  --relay_log_info_repository='TABLE' \
+  --plugin-load='group_replication.so' \
+  --relay-log-recovery='ON' \
+  --group_replication_start_on_boot='OFF' \
+  --group_replication_group_name='aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee' \
+  --group_replication_local_address='node2:6606' \
+  --group_replication_group_seeds='node1:6606,node2:6606,node3:6606' \
+  --group_replication_ip_whitelist='172.19.0.2,172.19.0.3,172.19.0.4' \
+  --group_replication_bootstrap_group='OFF' \
+  --group_replication_recovery_retry_count=5
 
-docker run -d --rm --name=node3 --net=group1 --hostname=node3 -v $PWD/d2:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=mypass mysql/mysql-server:8.0 --server-id=3 --log-bin='mysql-bin-1.log' --enforce-gtid-consistency='ON' --log-slave-updates='ON' --gtid-mode='ON' --transaction-write-set-extraction='XXHASH64' --binlog-checksum='NONE' --master-info-repository='TABLE' --relay_log_info_repository='TABLE' --plugin-load='group_replication.so' --relay-log-recovery='ON' --group_replication_start_on_boot='OFF' --group_replication_group_name='aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee' --group_replication_local_address='node3:6606' --group_replication_group_seeds='node1:6606,node2:6606,node3:6606' --group_replication_ip_whitelist='172.19.0.2,172.19.0.3,172.19.0.4' --group_replication_bootstrap_group='OFF' --group_replication_recovery_retry_count=5
+docker run -d --rm --name=node3 --net=group1 --hostname=node3 \
+  -v $PWD/d2:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=mypass \
+  mysql/mysql-server:8.0 \
+  --server-id=3 \
+  --log-bin='mysql-bin-1.log' \
+  --enforce-gtid-consistency='ON' \
+  --log-slave-updates='ON' \
+  --gtid-mode='ON' \
+  --transaction-write-set-extraction='XXHASH64' \
+  --binlog-checksum='NONE' \
+  --master-info-repository='TABLE' \
+  --relay_log_info_repository='TABLE' \
+  --plugin-load='group_replication.so' \
+  --relay-log-recovery='ON' \
+  --group_replication_start_on_boot='OFF' \
+  --group_replication_group_name='aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee' \
+  --group_replication_local_address='node3:6606' \
+  --group_replication_group_seeds='node1:6606,node2:6606,node3:6606' \
+  --group_replication_ip_whitelist='172.19.0.2,172.19.0.3,172.19.0.4' \
+  --group_replication_bootstrap_group='OFF' \
+  --group_replication_recovery_retry_count=5
 ```
 It's possible to see whether the containers are started by running:
 ```
