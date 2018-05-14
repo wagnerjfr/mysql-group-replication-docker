@@ -10,7 +10,7 @@ Setting up Group Replication with Docker MySQL images
 
 ## Prerequisites
 
-1. Have Docker installed
+1. Docker installed
 2. Do not run while connected to VPN
 
 ## Overview
