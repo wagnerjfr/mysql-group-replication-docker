@@ -117,10 +117,10 @@ It's possible to see whether the containers are started by running:
 ```
 docker ps -a
 ```
-![alt text](https://github.com/wagnerjfr/MySQLGroupReplication/blob/master/Docker-GR-Image1.png)
+![alt text](https://github.com/wagnerjfr/mysql-group-replication-docker/blob/master/Docker-GR-Image1.png)
 
 The above image you can see that the containers are starting.
-![alt text](https://github.com/wagnerjfr/MySQLGroupReplication/blob/master/Docker-GR-Image2.png)
+![alt text](https://github.com/wagnerjfr/mysql-group-replication-docker/blob/master/Docker-GR-Image2.png)
 
 After some seconds, all 3 containers are up and running.
 
@@ -171,21 +171,21 @@ START GROUP_REPLICATION;
 SELECT * FROM performance_schema.replication_group_members;
 ```
 By now, you should see:
-![alt text](https://github.com/wagnerjfr/MySQLGroupReplication/blob/master/Docker-GR-Image3.png)
+![alt text](https://github.com/wagnerjfr/mysql-group-replication-docker/blob/master/Docker-GR-Image3.png)
 
-## Stop containers, remove created network and image
+## Stopping containers, removing created network and image
 
 In another terminal, run the below commands to:
 
-#### Stop running container(s):
+#### Stopping running container(s):
 ```
 docker stop node1 node2 node3
 ```
-#### Remove the data directories created (they are located in the folder were the containers were run):
+#### Removing the data directories created (they are located in the folder were the containers were run):
 ```
 sudo rm -rf d0 d1 d2
 ```
-#### Remove the created network:
+#### Removing the created network:
 ```
 docker network rm group1
 ```
