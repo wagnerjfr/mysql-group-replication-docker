@@ -132,9 +132,9 @@ Open 3 new terminals and run the below commands in each one:
 
 ### node1
 
-Access MySQL server inside the container (password: mypass):
+Access MySQL server inside the container:
 ```
-docker exec -it node1 mysql -uroot -p
+docker exec -it node1 mysql -uroot -pmypass
 ```
 Run these commands in server console:
 ```
@@ -149,9 +149,9 @@ SELECT * FROM performance_schema.replication_group_members;
 
 ### node2
 
-Access MySQL server inside the container (password: mypass):
+Access MySQL server inside the container:
 ```
-docker exec -it node2 mysql -uroot -p
+docker exec -it node2 mysql -uroot -pmypass
 ```
 Run these commands in server console:
 ```
@@ -162,9 +162,9 @@ SELECT * FROM performance_schema.replication_group_members;
 
 ### node3
 
-Access MySQL server inside the container (password: mypass):
+Access MySQL server inside the container:
 ```
-docker exec -it node3 mysql -uroot -p
+docker exec -it node3 mysql -uroot -pmypass
 ```
 Run these commands in server console:
 ```
