@@ -133,13 +133,13 @@ After some seconds, all 3 containers are up and running.
 Run these commands in server console:
 ```
 docker exec -it node1 mysql -uroot -pmypass \
-  -e"SET @@GLOBAL.group_replication_bootstrap_group=1;" \
-  -e"create user 'root'@'%';" \
-  -e"GRANT ALL  ON * . * TO root@'%';" \
-  -e"flush privileges;" \
-  -e"change master to master_user='root' for channel 'group_replication_recovery';" \
-  -e"START GROUP_REPLICATION;" \
-  -e"SELECT * FROM performance_schema.replication_group_members;"
+  -e "SET @@GLOBAL.group_replication_bootstrap_group=1;" \
+  -e "create user 'root'@'%';" \
+  -e "GRANT ALL  ON * . * TO root@'%';" \
+  -e "flush privileges;" \
+  -e "change master to master_user='root' for channel 'group_replication_recovery';" \
+  -e "START GROUP_REPLICATION;" \
+  -e "SELECT * FROM performance_schema.replication_group_members;"
 ```
 
 ### node2 and node3
@@ -148,15 +148,16 @@ Run these commands in server console:
 ```
 for N in 2 3
 do docker exec -it node$N mysql -uroot -pmypass \
-  -e"change master to master_user='root' for channel 'group_replication_recovery';" \
-  -e"START GROUP_REPLICATION;"
+  -e "change master to master_user='root' for channel 'group_replication_recovery';" \
+  -e "START GROUP_REPLICATION;"
 done
 ```
 And finally:
 ```
 for N in 1 2 3
 do docker exec -it node$N mysql -uroot -pmypass \
-  -e"SELECT * FROM performance_schema.replication_group_members;"
+  -e "SHOW VARIABLES WHERE Variable_name = 'hostname';" \
+  -e "SELECT * FROM performance_schema.replication_group_members;"
 done
 ```
 
