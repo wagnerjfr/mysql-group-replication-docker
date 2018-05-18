@@ -157,8 +157,6 @@ By now, you should see:
 
 ## Stopping containers, removing created network and image
 
-In another terminal, run the below commands to:
-
 #### Stopping running container(s):
 ```
 docker stop node1 node2 node3
