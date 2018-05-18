@@ -130,7 +130,7 @@ After some seconds, all 3 containers are up and running.
 
 ### node1
 
-Run these commands in server console:
+Run these commands in terminal:
 ```
 docker exec -it node1 mysql -uroot -pmypass \
   -e "SET @@GLOBAL.group_replication_bootstrap_group=1;" \
@@ -144,7 +144,7 @@ docker exec -it node1 mysql -uroot -pmypass \
 
 ### node2 and node3
 
-Run these commands in server console:
+Run these commands in terminal:
 ```
 for N in 2 3
 do docker exec -it node$N mysql -uroot -pmypass \
