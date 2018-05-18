@@ -66,10 +66,7 @@ docker run -d --rm --name=node1 --net=group1 --hostname=node1 \
   --group_replication_start_on_boot='OFF' \
   --group_replication_group_name='aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee' \
   --group_replication_local_address='node1:6606' \
-  --group_replication_group_seeds='node1:6606,node2:6606,node3:6606' \
-  --group_replication_ip_whitelist='172.19.0.2,172.19.0.3,172.19.0.4' \
-  --group_replication_bootstrap_group='OFF' \
-  --group_replication_recovery_retry_count=5
+  --group_replication_group_seeds='node1:6606,node2:6606,node3:6606'
 
 docker run -d --rm --name=node2 --net=group1 --hostname=node2 \
   -v $PWD/d1:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=mypass \
@@ -88,10 +85,7 @@ docker run -d --rm --name=node2 --net=group1 --hostname=node2 \
   --group_replication_start_on_boot='OFF' \
   --group_replication_group_name='aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee' \
   --group_replication_local_address='node2:6606' \
-  --group_replication_group_seeds='node1:6606,node2:6606,node3:6606' \
-  --group_replication_ip_whitelist='172.19.0.2,172.19.0.3,172.19.0.4' \
-  --group_replication_bootstrap_group='OFF' \
-  --group_replication_recovery_retry_count=5
+  --group_replication_group_seeds='node1:6606,node2:6606,node3:6606'
 
 docker run -d --rm --name=node3 --net=group1 --hostname=node3 \
   -v $PWD/d2:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=mypass \
@@ -110,10 +104,7 @@ docker run -d --rm --name=node3 --net=group1 --hostname=node3 \
   --group_replication_start_on_boot='OFF' \
   --group_replication_group_name='aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee' \
   --group_replication_local_address='node3:6606' \
-  --group_replication_group_seeds='node1:6606,node2:6606,node3:6606' \
-  --group_replication_ip_whitelist='172.19.0.2,172.19.0.3,172.19.0.4' \
-  --group_replication_bootstrap_group='OFF' \
-  --group_replication_recovery_retry_count=5
+  --group_replication_group_seeds='node1:6606,node2:6606,node3:6606'
 ```
 It's possible to see whether the containers are started by running:
 ```
