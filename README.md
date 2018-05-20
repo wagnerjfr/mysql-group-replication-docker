@@ -23,7 +23,7 @@ We start by creating a Docker network named **group1**, then we are going to pul
 
 To download the MySQL Community Edition image, the command is:
 ```
-docker pull mysql/mysql-server:tag
+$ docker pull mysql/mysql-server:tag
 ```
 If :tag is omitted, the latest tag is used, and the image for the latest GA version of MySQL Server is downloaded.
 
@@ -37,13 +37,13 @@ In this example, we are going to use ***mysql/mysql-server:8.0***
 
 ## Creating a Docker network
 ```
-docker network create group1
+$ docker network create group1
 ```
 Just need to create it once, unless you remove it from docker network.
 
 To see all Docker Network:
 ```
-docker network ls
+$ docker network ls
 ```
 ## Creating 3 MySQL 8 containers
 
@@ -108,7 +108,7 @@ docker run -d --rm --name=node3 --net=group1 --hostname=node3 \
 ```
 It's possible to see whether the containers are started by running:
 ```
-docker ps -a
+$ docker ps -a
 ```
 ![alt text](https://github.com/wagnerjfr/mysql-group-replication-docker/blob/master/Docker-GR-Image1.png)
 
@@ -123,7 +123,7 @@ After some seconds, all 3 containers are up and running.
 
 Run these commands in terminal:
 ```
-docker exec -it node1 mysql -uroot -pmypass \
+$ docker exec -it node1 mysql -uroot -pmypass \
   -e "SET @@GLOBAL.group_replication_bootstrap_group=1;" \
   -e "create user 'root'@'%';" \
   -e "GRANT ALL  ON * . * TO root@'%';" \
@@ -159,17 +159,17 @@ By now, you should see:
 
 #### Stopping running container(s):
 ```
-docker stop node1 node2 node3
+$ docker stop node1 node2 node3
 ```
 #### Removing the data directories created (they are located in the folder were the containers were run):
 ```
-sudo rm -rf d0 d1 d2
+$ sudo rm -rf d0 d1 d2
 ```
 #### Removing the created network:
 ```
-docker network rm group1
+$ docker network rm group1
 ```
 #### Remove the MySQL 8 image:
 ```
-docker rmi mysql/mysql-server:8.0
+$ docker rmi mysql/mysql-server:8.0
 ```
