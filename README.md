@@ -125,11 +125,12 @@ Run these commands in terminal:
 ```
 $ docker exec -it node1 mysql -uroot -pmypass \
   -e "SET @@GLOBAL.group_replication_bootstrap_group=1;" \
-  -e "create user 'root'@'%';" \
-  -e "GRANT ALL  ON * . * TO root@'%';" \
+  -e "create user 'repl'@'%';" \
+  -e "GRANT ALL  ON * . * TO repl@'%';" \
   -e "flush privileges;" \
   -e "change master to master_user='root' for channel 'group_replication_recovery';" \
   -e "START GROUP_REPLICATION;" \
+  -e "SET @@GLOBAL.group_replication_bootstrap_group=0;" \
   -e "SELECT * FROM performance_schema.replication_group_members;"
 ```
 
@@ -139,7 +140,7 @@ Run these commands in terminal:
 ```
 for N in 2 3
 do docker exec -it node$N mysql -uroot -pmypass \
-  -e "change master to master_user='root' for channel 'group_replication_recovery';" \
+  -e "change master to master_user='repl' for channel 'group_replication_recovery';" \
   -e "START GROUP_REPLICATION;"
 done
 ```
