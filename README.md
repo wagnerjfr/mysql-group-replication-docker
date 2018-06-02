@@ -42,7 +42,7 @@ $ docker network create group1
 ```
 You just need to create it once, unless you remove it from Docker.
 
-To see all Docker Networks:
+To see all Docker networks:
 ```
 $ docker network ls
 ```
