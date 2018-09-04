@@ -17,9 +17,9 @@ https://github.com/wagnerjfr/mysql-group-replication-binaries-docker
 
 ## Overview
 
-We start by creating a Docker network named **group1**, then we are going to pull **mysql 8** from Docker Hub (https://hub.docker.com/r/mysql/mysql-server/) and create a group replication topology with 3 group members in different hosts.
+We start by pulling **mysql 8** from Docker Hub (https://hub.docker.com/r/mysql/mysql-server/), then we are going to create a Docker network named **group1** and finally setup a Group Replication topology with 4 group members in different hosts.
 
-## Pull MySQL Sever Image
+## Pulling MySQL Sever Image
 
 To download the MySQL Community Edition image, the command is:
 ```
