@@ -50,10 +50,11 @@ $ docker network ls
 
 Run the commands below in a terminal.
 ```
-docker run -d --rm --name=node1 --net=group1 --hostname=node1 \
-  -v $PWD/d0:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=mypass \
+for N in 1 2 3
+do docker run -d --name=node$N --net=group1 --hostname=node$N \
+  -v $PWD/d$N:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=mypass \
   mysql/mysql-server:8.0 \
-  --server-id=1 \
+  --server-id=$N \
   --log-bin='mysql-bin-1.log' \
   --enforce-gtid-consistency='ON' \
   --log-slave-updates='ON' \
@@ -61,51 +62,16 @@ docker run -d --rm --name=node1 --net=group1 --hostname=node1 \
   --transaction-write-set-extraction='XXHASH64' \
   --binlog-checksum='NONE' \
   --master-info-repository='TABLE' \
-  --relay_log_info_repository='TABLE' \
+  --relay-log-info-repository='TABLE' \
   --plugin-load='group_replication.so' \
   --relay-log-recovery='ON' \
-  --group_replication_start_on_boot='OFF' \
-  --group_replication_group_name='aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee' \
-  --group_replication_local_address='node1:6606' \
-  --group_replication_group_seeds='node1:6606,node2:6606,node3:6606'
-
-docker run -d --rm --name=node2 --net=group1 --hostname=node2 \
-  -v $PWD/d1:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=mypass \
-  mysql/mysql-server:8.0 \
-  --server-id=2 \
-  --log-bin='mysql-bin-1.log' \
-  --enforce-gtid-consistency='ON' \
-  --log-slave-updates='ON' \
-  --gtid-mode='ON' \
-  --transaction-write-set-extraction='XXHASH64' \
-  --binlog-checksum='NONE' \
-  --master-info-repository='TABLE' \
-  --relay_log_info_repository='TABLE' \
-  --plugin-load='group_replication.so' \
-  --relay-log-recovery='ON' \
-  --group_replication_start_on_boot='OFF' \
-  --group_replication_group_name='aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee' \
-  --group_replication_local_address='node2:6606' \
-  --group_replication_group_seeds='node1:6606,node2:6606,node3:6606'
-
-docker run -d --rm --name=node3 --net=group1 --hostname=node3 \
-  -v $PWD/d2:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=mypass \
-  mysql/mysql-server:8.0 \
-  --server-id=3 \
-  --log-bin='mysql-bin-1.log' \
-  --enforce-gtid-consistency='ON' \
-  --log-slave-updates='ON' \
-  --gtid-mode='ON' \
-  --transaction-write-set-extraction='XXHASH64' \
-  --binlog-checksum='NONE' \
-  --master-info-repository='TABLE' \
-  --relay_log_info_repository='TABLE' \
-  --plugin-load='group_replication.so' \
-  --relay-log-recovery='ON' \
-  --group_replication_start_on_boot='OFF' \
-  --group_replication_group_name='aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee' \
-  --group_replication_local_address='node3:6606' \
-  --group_replication_group_seeds='node1:6606,node2:6606,node3:6606'
+  --group-replication-start-on-boot='OFF' \
+  --group-replication-group-name='aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee' \
+  --group-replication-local-address="node$N:6606" \
+  --group-replication-group-seeds='node1:6606,node2:6606,node3:6606' \
+  --loose-group-replication-single-primary-mode='ON' \
+  --loose-group-replication-enforce-update-everywhere-checks='OFF'
+done
 ```
 It's possible to see whether the containers are started by running:
 ```
@@ -117,6 +83,13 @@ The above image you can see that the containers are starting.
 ![alt text](https://github.com/wagnerjfr/mysql-group-replication-docker/blob/master/Docker-GR-Image2.png)
 
 After some seconds, all 3 containers are up and running.
+
+If some problem happens and one or more containers are not started, we can check the MySQL logs running (for instance in node1):
+```
+$ docker logs node1
+```
+P.S. You must always remember to remove a stopped container (for instance running: "docker rm node1") and delete the MySQL data directory which was created, before running a new container with an existing name again.
+
 
 ## Setup and start a group replication in the containers
 
@@ -163,6 +136,10 @@ By now, you should see:
 ```
 $ docker stop node1 node2 node3
 ```
+#### Removing stopped container(s):
+```
+$ docker rm node1 node2 node3 node4
+```
 #### Removing the data directories created (they are located in the folder were the containers were run):
 ```
 $ sudo rm -rf d0 d1 d2
@@ -171,7 +148,7 @@ $ sudo rm -rf d0 d1 d2
 ```
 $ docker network rm group1
 ```
-#### Remove the MySQL 8 image:
+#### Removing the MySQL 8 image:
 ```
 $ docker rmi mysql/mysql-server:8.0
 ```
