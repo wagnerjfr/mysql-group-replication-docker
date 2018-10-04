@@ -142,7 +142,7 @@ $ docker stop node1 node2 node3
 ```
 $ docker rm node1 node2 node3 node4
 ```
-#### To remove the data directories created (they are located in the folder were the containers were run):
+#### To remove the data directories created (they are located in the folder where the containers were started from):
 ```
 $ sudo rm -rf d0 d1 d2
 ```
