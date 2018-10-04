@@ -3,6 +3,9 @@ Setting up Group Replication with Docker MySQL images
 
 #### The MySQL Group Replication feature is a multi-master update anywhere replication plugin  for MySQL with built-in conflict detection and resolution, automatic distributed recovery, and group membership.
 
+## Full article
+https://mysqlhighavailability.com/setting-up-mysql-group-replication-with-mysql-docker-images/
+
 ## References
 1. https://dev.mysql.com/doc/refman/8.0/en/group-replication.html
 2. https://mysqlhighavailability.com/mysql-group-replication-its-in-5-7-17-ga/
@@ -13,7 +16,6 @@ https://github.com/wagnerjfr/mysql-group-replication-binaries-docker
 ## Prerequisites
 
 1. Docker installed
-2. Do not run while connected to VPN
 
 ## Overview
 
@@ -132,23 +134,23 @@ By now, you should see:
 
 ## Stopping containers, removing created network and image
 
-#### Stopping running container(s):
+#### To stop the running container(s):
 ```
 $ docker stop node1 node2 node3
 ```
-#### Removing stopped container(s):
+#### to remove the stopped container(s):
 ```
 $ docker rm node1 node2 node3 node4
 ```
-#### Removing the data directories created (they are located in the folder were the containers were run):
+#### To remove the data directories created (they are located in the folder were the containers were run):
 ```
 $ sudo rm -rf d0 d1 d2
 ```
-#### Removing the created network:
+#### to remove the created network:
 ```
 $ docker network rm group1
 ```
-#### Removing the MySQL 8 image:
+#### To remove the MySQL 8 image:
 ```
 $ docker rmi mysql/mysql-server:8.0
 ```
