@@ -228,23 +228,23 @@ mysql: [Warning] Using a password on the command line interface can be insecure.
 
 ## Stopping containers, removing created network and image
 
-#### To stop the running container(s):
+#### Stop the running container(s):
 ```
 $ docker stop node1 node2 node3 node4
 ```
-#### to remove the stopped container(s):
+#### Remove the stopped container(s):
 ```
-$ docker rm node1 node2 node3 node4 node4
+$ docker rm node1 node2 node3 node4
 ```
-#### To remove the data directories created (they are located in the folder where the containers were started from):
+#### Remove the data directories created (they are located in the folder where the containers were started from):
 ```
-$ sudo rm -rf d0 d1 d2 d4
+$ sudo rm -rf d0 d1 d2 d3 d4
 ```
-#### to remove the created network:
+#### Remove the created network:
 ```
 $ docker network rm group1
 ```
-#### To remove the MySQL 8 image:
+#### Remove the MySQL 8 image:
 ```
 $ docker rmi mysql/mysql-server:8.0
 ```
