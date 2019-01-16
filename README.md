@@ -98,7 +98,7 @@ P.S. You must always remember to remove a stopped container (for instance runnin
 
 Run these commands in terminal:
 ```
-$ docker exec -it node1 mysql -uroot -pmypass \
+$ docker exec -t node1 mysql -uroot -pmypass \
   -e "SET @@GLOBAL.group_replication_bootstrap_group=1;" \
   -e "create user 'repl'@'%';" \
   -e "GRANT REPLICATION SLAVE ON *.* TO repl@'%';" \
@@ -114,7 +114,7 @@ $ docker exec -it node1 mysql -uroot -pmypass \
 Run these commands in terminal:
 ```
 for N in 2 3
-do docker exec -it node$N mysql -uroot -pmypass \
+do docker exec -t node$N mysql -uroot -pmypass \
   -e "change master to master_user='repl' for channel 'group_replication_recovery';" \
   -e "START GROUP_REPLICATION;"
 done
@@ -122,7 +122,7 @@ done
 And finally:
 ```
 for N in 1 2 3
-do docker exec -it node$N mysql -uroot -pmypass \
+do docker exec -t node$N mysql -uroot -pmypass \
   -e "SHOW VARIABLES WHERE Variable_name = 'hostname';" \
   -e "SELECT * FROM performance_schema.replication_group_members;"
 done
@@ -198,13 +198,13 @@ docker run -d --name=node4 --net=group1 --hostname=node4 \
 ```
 Wait for state ```Up (healthy)``` and run the command below:
 ```
-docker exec -it node4 mysql -uroot -pmypass \
+docker exec -t node4 mysql -uroot -pmypass \
   -e "change master to master_user='repl' for channel 'group_replication_recovery';" \
   -e "START GROUP_REPLICATION;"
 ```
 Finally execute:
 ```
-docker exec -it node4 mysql -uroot -pmypass \
+docker exec -t node4 mysql -uroot -pmypass \
   -e "SHOW VARIABLES WHERE Variable_name = 'hostname';" \
   -e "SELECT * FROM performance_schema.replication_group_members;"
 ```
