@@ -50,7 +50,12 @@ $ docker network ls
 ```
 ## Creating 3 MySQL 8 containers
 
-Run the commands below in a terminal.
+Run the command below in a terminal for creating three MySQL 8 containers:
+
+Note: If you wish to configure a **multi-primary mode** (which is the MySQL GR's default mode), change the `loose-group-replication-single-primary-mode` and `loose-group-replication-enforce-update-everywhere-checks` values to `OFF` and `ON` respectively. For a single-primary mode, just leave as it is.
+
+![alt text](https://github.com/wagnerjfr/mysql-group-replication-docker/blob/master/figures/group_replication_single_multi_primary.png)
+
 ```
 for N in 1 2 3
 do docker run -d --name=node$N --net=group1 --hostname=node$N \
