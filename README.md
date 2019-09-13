@@ -178,7 +178,7 @@ mysql: [Warning] Using a password on the command line interface can be insecure.
 
 ## Add a new node to group
 
-Let's start a container "node4":
+Let's start a container ***node4***:
 ```
 docker run -d --name=node4 --net=group1 --hostname=node4 \
   -v $PWD/d4:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=mypass \
