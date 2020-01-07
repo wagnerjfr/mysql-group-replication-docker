@@ -97,7 +97,7 @@ If some problem happens and one or more containers are not started, we can check
 ```
 $ docker logs node1
 ```
-P.S. You must always remember to remove a stopped container (for instance running: "docker rm node1") and delete the MySQL data directory which was created, before running a new container with an existing name again.
+P.S. You must always remember to remove a stopped container (for instance running: `docker rm node1`) and delete the MySQL data directory which was created, before running a new container with an existing name again.
 
 ## Setup and start a group replication in the containers
 
