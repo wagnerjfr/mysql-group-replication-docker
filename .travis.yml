@@ -1,0 +1,18 @@
+language: bash
+services:
+  - docker
+before_script:
+  - docker pull mysql/mysql-server:${MYSQL_VERSION}
+  - docker network create group1
+script:
+  - bash ./travis-ci/1_create_containers.sh
+  - docker ps -a
+  - sleep 120
+  - docker ps -a
+  - docker logs node1
+  - bash ./travis-ci/2_setup_gr.sh
+  - bash ./travis-ci/3_test_gr.sh
+after_script:
+  - bash ./travis-ci/4_cleanup.sh
+  - docker network rm group1
+  - docker rmi mysql/mysql-server:${MYSQL_VERSION}
