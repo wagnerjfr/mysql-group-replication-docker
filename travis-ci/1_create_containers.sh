@@ -15,10 +15,10 @@ do docker run -d --name=node$N --net=group1 --hostname=node$N \
   --relay-log-info-repository='TABLE' \
   --plugin-load='group_replication.so' \
   --relay-log-recovery='ON' \
-  --group-replication-start-on-boot='OFF' \
-  --group-replication-group-name='aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee' \
-  --group-replication-local-address="node$N:6606" \
-  --group-replication-group-seeds='node1:6606,node2:6606,node3:6606' \
+  --loose-group-replication-start-on-boot='OFF' \
+  --loose-group-replication-group-name='aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee' \
+  --loose-group-replication-local-address="node$N:6606" \
+  --loose-group-replication-group-seeds='node1:6606,node2:6606,node3:6606' \
   --loose-group-replication-single-primary-mode='ON' \
   --loose-group-replication-enforce-update-everywhere-checks='OFF'
 done
