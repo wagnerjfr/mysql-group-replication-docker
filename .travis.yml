@@ -11,6 +11,7 @@ script:
   - docker ps -a
   - docker logs node1
   - bash ./travis-ci/2_setup_gr.sh
+  - sleep 10
   - bash ./travis-ci/3_test_gr.sh
 after_script:
   - bash ./travis-ci/4_cleanup.sh
