@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/wagnerjfr/mysql-group-replication-docker.svg?branch=master)](https://travis-ci.org/wagnerjfr/mysql-group-replication-docker)
+[![Build Status](https://travis-ci.com/wagnerjfr/mysql-group-replication-docker.svg?branch=master)](https://travis-ci.com/wagnerjfr/mysql-group-replication-docker)
 
 # MySQL Group Replication with Docker MySQL Images
 Setting up Group Replication with Docker MySQL images
