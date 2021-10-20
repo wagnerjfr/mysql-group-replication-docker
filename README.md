@@ -16,6 +16,9 @@ https://github.com/wagnerjfr/mysql-group-replication-docker
 
 https://github.com/wagnerjfr/mysql-group-replication-binaries-docker
 
+## YugabyteDB (another database solution for creating a cluster)
+https://github.com/wagnerjfr/yugabytedb-docker-sample
+
 ## Prerequisites
 
 1. Docker installed
